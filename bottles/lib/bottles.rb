@@ -8,15 +8,26 @@ class Bottles
   end
 
   def verse(number)
-    case number
-    when 0
-      "No more bottles of beer on the wall, no more bottles of beer.\nGo to the store and buy some more, 99 bottles of beer on the wall.\n"
+    "#{remaining_beverages(number).capitalize} #{container(number)} of beer on the wall, #{remaining_beverages(number)} #{container(number)} of beer.\n#{action(number)}, #{next_run(number)} #{container(number - 1)} of beer on the wall.\n"
+  end
+
+  def next_run(num=0)
+    if num == 0
+      99
     else
-      "#{number} #{container(number)} of beer on the wall, #{number} #{container(number)} of beer.\nTake #{pronoun(number)} down and pass it around, #{remaining_beverages(number - 1)} #{container(number - 1)} of beer on the wall.\n"
+      remaining_beverages(num - 1)
     end
   end
 
-  def remaining_beverages(num=0)
+  def action(num = 0)
+    if num == 0
+      "Go to the store and buy some more"
+    else
+      "Take #{pronoun(num)} down and pass it around"
+    end
+  end
+
+  def remaining_beverages(num)
     if num == 0
       "no more"
     else
@@ -24,7 +35,7 @@ class Bottles
     end
   end
 
-  def pronoun(num=1)
+  def pronoun(num)
     if num == 1
       "it"
     else
@@ -32,7 +43,7 @@ class Bottles
     end
   end
 
-  def container(num=:something)
+  def container(num)
     if num == 1
       "bottle"
     else
