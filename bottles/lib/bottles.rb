@@ -8,7 +8,9 @@ class Bottles
   end
 
   def verse(number)
-    "#{remaining_beverages(number).capitalize} #{container(number)} of beer on the wall, #{remaining_beverages(number)} #{container(number)} of beer.\n#{action(number)}, #{remaining_beverages(next_run(number))} #{container(next_run(number))} of beer on the wall.\n"
+    "#{remaining_beverages(number).capitalize} #{container(number)} of beer on the wall, "+
+    "#{remaining_beverages(number)} #{container(number)} of beer.\n#{action(number)}, " +
+    "#{remaining_beverages(next_run(number))} #{container(next_run(number))} of beer on the wall.\n"
   end
 
   def next_run(num=0)
